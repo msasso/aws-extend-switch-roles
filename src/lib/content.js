@@ -121,7 +121,10 @@ function loadProfiles(profileSet, list, csrf, hidesHistory, hidesAccountId) {
     var name = item.profile;
     var account_text = '';
     if (recentNames.indexOf(name) !== -1) return true;
-    if (!hidesAccountId) account_text = item.aws_account_id;
+    if (!hidesAccountId) {
+      name += '  ';
+      account_text = item.aws_account_id;
+    }
 
     var color = item.color || 'aaaaaa';
     var actionHost = window.location.host.endsWith('.amazonaws-us-gov.com') ? 'signin.amazonaws-us-gov.com' : 'signin.aws.amazon.com';
