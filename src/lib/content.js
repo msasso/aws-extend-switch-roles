@@ -119,8 +119,9 @@ function loadProfiles(profileSet, list, csrf, hidesHistory, hidesAccountId) {
   const redirectUri = encodeURIComponent(window.location.href);
   profileSet.destProfiles.forEach(function(item) {
     var name = item.profile;
+    var account_text = '';
     if (recentNames.indexOf(name) !== -1) return true;
-    if (!hidesAccountId) name += '  |  ' + item.aws_account_id;
+    if (!hidesAccountId) account_text = item.aws_account_id;
 
     var color = item.color || 'aaaaaa';
     var actionHost = window.location.host.endsWith('.amazonaws-us-gov.com') ? 'signin.amazonaws-us-gov.com' : 'signin.aws.amazon.com';
@@ -137,6 +138,8 @@ function loadProfiles(profileSet, list, csrf, hidesHistory, hidesAccountId) {
           <input type="hidden" name="redirect_uri" value="${redirectUri}">
           <label for="awsc-recent-role-switch-0" class="awsc-role-color" style="background-color: #${color};">&nbsp;</label>
           <input type="submit" class="awsc-role-submit awsc-role-display-name" name="displayName" value="${name}"
+                title="${item.role_name}@${item.aws_account_id}" style="white-space:pre">
+          <input type="submit" class="awsc-role-submit awsc-role-account-id" name="accountNumber" value="${account_text}"
                 title="${item.role_name}@${item.aws_account_id}" style="white-space:pre"></form>
         </li>`);
     } else {
@@ -152,6 +155,8 @@ function loadProfiles(profileSet, list, csrf, hidesHistory, hidesAccountId) {
           <input type="hidden" name="redirect_uri" value="${redirectUri}">
           <label for="awsc-recent-role-switch-0" class="awsc-role-color"><img src=${item.image.replace(/"/g, '')} style="margin-top: -1px; margin-left: -1px; width: 17px; height: 17px"></label>
           <input type="submit" class="awsc-role-submit awsc-role-display-name" name="displayName" value="${name}"
+                title="${item.role_name}@${item.aws_account_id}" style="white-space:pre">
+          <input type="submit" class="awsc-role-submit awsc-role-account-id" name="accountNumber" value="${account_text}"
                 title="${item.role_name}@${item.aws_account_id}" style="white-space:pre"></form>
         </li>`);
 
