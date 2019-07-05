@@ -140,7 +140,7 @@ function loadProfiles(profileSet, list, csrf, hidesHistory, hidesAccountId) {
           <input type="submit" class="awsc-role-submit awsc-role-display-name" name="displayName" value="${name}"
                 title="${item.role_name}@${item.aws_account_id}" style="white-space:pre">
           <input type="submit" class="awsc-role-submit awsc-role-account-id" name="accountNumber" value="${account_text}"
-                title="${item.role_name}@${item.aws_account_id}" style="white-space:pre"></form>
+                title="${item.role_name}@${item.aws_account_id}" style="float:right"></form>
         </li>`);
     } else {
         list.insertAdjacentHTML('beforeend', Sanitizer.escapeHTML`<li>
@@ -157,7 +157,7 @@ function loadProfiles(profileSet, list, csrf, hidesHistory, hidesAccountId) {
           <input type="submit" class="awsc-role-submit awsc-role-display-name" name="displayName" value="${name}"
                 title="${item.role_name}@${item.aws_account_id}" style="white-space:pre">
           <input type="submit" class="awsc-role-submit awsc-role-account-id" name="accountNumber" value="${account_text}"
-                title="${item.role_name}@${item.aws_account_id}" style="white-space:pre"></form>
+                title="${item.role_name}@${item.aws_account_id}" style="float:right"></form>
         </li>`);
 
     }
